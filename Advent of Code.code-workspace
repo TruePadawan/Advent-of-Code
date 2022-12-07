@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "2022"
+		}
+	],
+	"settings": {
+		"deno.unstable": true,
+		"deno.enable": true
+	}
+}
