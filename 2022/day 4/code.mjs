@@ -1,10 +1,15 @@
 const input = await Deno.readTextFile("./input.txt");
 let numberOfSubsets = 0;
+let numberOfOverlappingSets = 0;
 const pairsListRaw = input.split("\r\n");
 
 function isSubset(set, subset) {
 	if (set.length < subset.length) return false;
 	return subset.every((section) => set.includes(section));
+}
+
+function isOverlapping(setA, setB) {
+	return setB.some((section) => setA.includes(section));
 }
 
 function rangeToArray(range) {
@@ -25,6 +30,10 @@ pairsListRaw.forEach((pair) => {
 	if (isSubset(setA, setB) || isSubset(setB, setA)) {
 		numberOfSubsets += 1;
 	}
+	if (isOverlapping(setA, setB)) {
+		numberOfOverlappingSets += 1;
+	}
 });
 
 console.log(numberOfSubsets);
+console.log(numberOfOverlappingSets);
