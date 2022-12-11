@@ -19,10 +19,12 @@ input
 		const movedFromIndex = +arr.at(3) - 1;
 		const movedToIndex = +arr.at(-1) - 1;
 
+		const crateGroup = [];
 		for (let i = 0; i < nCratesToBeMoved; ++i) {
 			const crate = stacks[movedFromIndex].shift();
-			stacks[movedToIndex].unshift(crate);
+			crateGroup.push(crate);
 		}
+		stacks[movedToIndex].unshift(...crateGroup);
 	});
 
 const topStacks = stacks.map((stack) => stack.at(0));
