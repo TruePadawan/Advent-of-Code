@@ -18,7 +18,7 @@ const datastream = input.split("");
 let nCharactersProcessed = 0;
 for (let i = 0; i + 3 <= datastream.length; ++i) {
 	const possibleMarker = datastream.slice(i, i + 4);
-    nCharactersProcessed = i + 4;
+	nCharactersProcessed = i + 4;
 	if (allCharUnique(possibleMarker)) {
 		break;
 	}
