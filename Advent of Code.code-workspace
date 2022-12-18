@@ -2,10 +2,28 @@
 	"folders": [
 		{
 			"path": "2022"
+		},
+		{
+			"path": "utils"
 		}
 	],
 	"settings": {
-		"deno.unstable": true,
-		"deno.enable": true
+		"deno.enable": true,
+		"deno.lint": true
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+
+			{
+				"name": "Deno",
+				"type": "pwa-node",
+				"request": "launch",
+				"cwd": "${workspaceFolder}",
+				"runtimeExecutable": "deno",
+				"runtimeArgs": ["run", "--inspect-brk", "-A", "${file}"],
+				"attachSimplePort": 9229
+			}
+		]
 	}
 }
