@@ -75,12 +75,28 @@ outputList.forEach((output, index) => {
 		}
 	}
 });
-
-const filteredDirs = Object.keys(fileSystem.dirsSize).filter((dirID) => {
+const dirIDs = Object.keys(fileSystem.dirsSize);
+const filteredDirs = dirIDs.filter((dirID) => {
 	return fileSystem.dirsSize[dirID] <= 100000;
 });
 let filteredDirsSizeSum = 0;
 filteredDirs.forEach((dir) => {
 	filteredDirsSizeSum += fileSystem.dirsSize[dir];
 });
-console.log(filteredDirsSizeSum);
+console.log(`Part 1: ${filteredDirsSizeSum}`);
+
+// PART 2
+/*
+ MAKE AN ARRAY OF dirIDs, SORT DIRSIZES BY SIZE.
+*/
+const UPDATE_SIZE = 30000000;
+const DISK_SIZE = 70000000;
+const FREE_SPACE = DISK_SIZE - fileSystem.rootNode.getSize();
+dirIDs.sort((a, b) => fileSystem.dirsSize[a] - fileSystem.dirsSize[b]);
+for (let i = 0; i < dirIDs.length; ++i) {
+	const dirSize = fileSystem.dirsSize[dirIDs[i]];
+	if (FREE_SPACE + dirSize >= UPDATE_SIZE) {
+		console.log(`Part 2: ${dirSize}`);
+		break;
+	}
+}
