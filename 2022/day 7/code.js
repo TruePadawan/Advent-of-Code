@@ -1,5 +1,5 @@
-import { readFileSync } from "https://deno.land/std@0.168.0/node/fs.ts";
-import { FileSystem } from "./tree.mjs";
+import readInput from "../../init.js";
+import { FileSystem } from "./tree.js";
 
 function isCommand(output) {
 	return output.split(" ").at(0) === "$";
@@ -40,9 +40,7 @@ FOR EACH OUTPUT - CHECK IF ITS A COMMAND:
             IF ITEM IS A FILE:
                 ADD ITS INFO TO filesList of the current node.
 */
-const textDecoder = new TextDecoder();
-const rawData = readFileSync("./input.txt");
-const input = textDecoder.decode(rawData);
+const input = readInput(import.meta.url);
 const outputList = input.split("\r\n");
 const fileSystem = new FileSystem("/");
 outputList.forEach((output, index) => {

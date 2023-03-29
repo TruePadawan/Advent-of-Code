@@ -1,4 +1,6 @@
-const input = await Deno.readTextFile("./input.txt");
+import readInput from "../../init.js";
+
+const input = readInput(import.meta.url);
 /*
 LOOP THROUGH AND KEEP TRACK OF 3 CHARS AFTER CURRENT INDEX AND NUBMER OF CHARS VISITED.
 IF ALL 4 CHARS ARE UNIQUE, FIRST START-OF-PACKET DETECTED

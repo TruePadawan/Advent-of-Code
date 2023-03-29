@@ -1,4 +1,6 @@
-const input = Deno.readTextFileSync("./input.txt");
+import readInput from "../../init.js";
+
+const input = readInput(import.meta.url);
 const treeRows = input
 	.split("\r\n")
 	.map((treeRow) => treeRow.split("").map((treeHeight) => +treeHeight));
