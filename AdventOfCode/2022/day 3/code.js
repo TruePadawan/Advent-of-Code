@@ -1,4 +1,6 @@
-const input = await Deno.readTextFile("./input.txt");
+import readInput from "../../init.js";
+
+const input = readInput(import.meta.url);
 const rucksacks = input.split("\r\n");
 
 /* CALC ITEM PRIORITY
@@ -73,7 +75,6 @@ elfGroupList.forEach((group) => {
 			if (atLastElf && groupItems[item] === 1) {
 				// FOUND COMMON ITEM
 				groupBadge = item;
-				console.log(groupBadge);
 				break;
 			} else {
 				/* CREATE A MAP OF ITEMS FROM THE FIRST ELF IN THE GROUP

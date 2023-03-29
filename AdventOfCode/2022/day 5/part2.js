@@ -1,3 +1,7 @@
+import readInput from "../../init.js";
+
+const input = readInput(import.meta.url);
+
 const stacks = [
 	["W", "T", "H", "P", "J", "C", "F"],
 	["H", "B", "J", "Z", "F", "V", "R", "G"],
@@ -10,7 +14,6 @@ const stacks = [
 	["M", "F", "S", "Z", "D"],
 ];
 
-const input = await Deno.readTextFile("./input.txt");
 input
 	.split("\r\n")
 	.map((line) => line.split(" "))

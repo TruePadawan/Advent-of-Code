@@ -1,4 +1,6 @@
-const input = await Deno.readTextFile("./input.txt");
+import readInput from "../../init.js";
+
+const input = readInput(import.meta.url);
 let numberOfSubsets = 0;
 let numberOfOverlappingSets = 0;
 const pairsListRaw = input.split("\r\n");

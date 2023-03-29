@@ -1,7 +1,9 @@
+import readInput from "../../init.js";
+
 /*
     GROUP EACH ELF CALORIE LIST INTO AN ARRAY, ALL INTO AN ARRAY OF ELF CALORIE LIST
 */
-const input = await Deno.readTextFile("./input.txt");
+const input = readInput(import.meta.url);
 
 const inputToArray = input.split("\r\n");
 const elvesCalories = [];

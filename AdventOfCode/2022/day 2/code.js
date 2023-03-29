@@ -1,3 +1,5 @@
+import readInput from "../../init.js";
+
 const SHAPE_SCORE = {
 	ROCK: 1,
 	PAPER: 2,
@@ -27,7 +29,7 @@ const SHAPES_WIN_AGAINST = {
 	SCISSORS: "PAPER",
 };
 
-const input = await Deno.readTextFile("./input.txt");
+const input = readInput(import.meta.url);
 const choices = input.split("\r\n");
 let totalScore = 0;
 

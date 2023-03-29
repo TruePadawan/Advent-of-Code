@@ -1,4 +1,4 @@
-import { createUID } from "../../utils/utils.js";
+import { createUID } from "../../../utils/utils.js";
 
 export class FileSystemNode {
 	id;
