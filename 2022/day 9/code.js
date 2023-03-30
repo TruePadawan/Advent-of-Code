@@ -37,8 +37,8 @@ class Position {
 		return `${this.x},${this.y}`;
 	}
 	isAdjacent(pos) {
-		const xDiff = Math.abs(Math.abs(this.x) - Math.abs(pos.x));
-		const yDiff = Math.abs(Math.abs(this.y) - Math.abs(pos.y));
+		const xDiff = Math.abs(this.x - pos.x)
+		const yDiff = Math.abs(this.y - pos.y);
 		if (xDiff > 1 || yDiff > 1) return false;
 		return true;
 	}
@@ -79,7 +79,7 @@ function simulateRopePhysics(steps) {
 				default:
 					break;
 			}
-			if (head.isAdjacent(tail) === false) {
+			if (tail.isAdjacent(head) === false) {
 				if (head.x > tail.x) {
 					tail.x += 1;
 				} else if (head.x < tail.x) {
