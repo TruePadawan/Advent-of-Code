@@ -64,9 +64,7 @@ function getStepData(step) {
 function simulateRopePhysics(steps) {
 	const head = new Position();
 	const tail = new Position();
-	const tailPositions = {
-		[tail.toString()]: 0,
-	};
+	const tailPositions = {};
 
 	for (let index = 0; index < steps.length; index++) {
 		let { direction, moves } = getStepData(steps[index]);
