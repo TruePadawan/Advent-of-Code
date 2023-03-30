@@ -36,12 +36,6 @@ class Position {
 	toString() {
 		return `${this.x},${this.y}`;
 	}
-	// getPositionDiff(pos) {
-	// 	return {
-	// 		xDiff: Math.abs(this.x) - Math.abs(pos.x),
-	// 		yDiff: Math.abs(this.y) - Math.abs(pos.y),
-	// 	};
-	// }
 	isAdjacent(pos) {
 		const xDiff = Math.abs(Math.abs(this.x) - Math.abs(pos.x));
 		const yDiff = Math.abs(Math.abs(this.y) - Math.abs(pos.y));
