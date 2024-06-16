@@ -1,44 +1,41 @@
+// Linux - mind the regex
+
 import readInput from "../../init.js";
 
-/*
-    GROUP EACH ELF CALORIE LIST INTO AN ARRAY, ALL INTO AN ARRAY OF ELF CALORIE LIST
-*/
 const input = readInput(import.meta.url);
 
-const inputToArray = input.split("\r\n");
-const elvesCalories = [];
-let elfCalorieList = [];
-let elfTotalCalrie = 0;
+const calories = input.split("\n");
+const calorieSumList = [];
+let calorieSum = 0;
 
-// CREATE AN ARRAY REPRESENTING EACH ELF'S CALORIE LIST
-for (let i = 0; i < inputToArray.length; ++i) {
-	const calorie = inputToArray[i];
-	if (calorie !== "") {
-		elfCalorieList.push(calorie);
-		elfTotalCalrie += +calorie;
-	}
-	if (calorie === "" || (calorie !== "" && i === inputToArray.length - 1)) {
-		elfCalorieList.push(elfTotalCalrie);
-		elvesCalories.push(elfCalorieList);
-		elfCalorieList = [];
-		elfTotalCalrie = 0;
+for (let i = 0; i < calories.length; i++) {
+	const calorie = calories[i];
+	const currentElfCaloriesAreSummedUp = calorie === "";
+
+	if (currentElfCaloriesAreSummedUp) {
+		if (calorieSumList.length === 0) {
+			calorieSumList.push(calorieSum);
+		} else {
+			// Check if the current elf's calorie sum is the highest, 2nd or 3rd and insert it the respective position, else just put it at the end of the array
+			if (calorieSum > calorieSumList[0]) {
+				calorieSumList.unshift(calorieSum);
+			} else if (calorieSum > calorieSumList[1]) {
+				calorieSumList.splice(1, 0, calorieSum);
+			} else if (calorieSum > calorieSumList[2]) {
+				calorieSumList.splice(2, 0, calorieSumList);
+			} else {
+				calorieSumList.push(calorieSum);
+			}
+		}
+		calorieSum = 0;
+	} else {
+		calorieSum += +calorie;
 	}
 }
 
+const highestCalorieSum = calorieSumList[0];
+console.log(highestCalorieSum);
 
-elvesCalories.sort((elfACalorieList, elfBCalorieList) => {
-    const elfATotalCalories = elfACalorieList[elfACalorieList.length - 1];
-	const elfBTotalCalories = elfBCalorieList[elfBCalorieList.length - 1];
-	return elfATotalCalories - elfBTotalCalories;
-}).reverse();
-
-const highestCalorieCount = elvesCalories.at(0).at(-1);
-console.log(`The highest calorie count is ${highestCalorieCount}`);
-
-let topThreeHighestCalorieCountSum = 0;
-for (let i = 0; i < elvesCalories.length; i++) {
-    if (i === 3) break;
-    topThreeHighestCalorieCountSum += elvesCalories.at(i).at(-1);
-}
-
-console.log(`Sum of top three calorie count is ${topThreeHighestCalorieCountSum}`);
+const sumOfTopThreeCalories =
+	calorieSumList[0] + calorieSumList[1] + calorieSumList[2];
+console.log(sumOfTopThreeCalories);
